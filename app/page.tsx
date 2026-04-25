@@ -2,7 +2,7 @@ const publicApps = [
   {
     title: 'Loan Default Predictor',
     description:
-      'LightGBM model trained on the Lending Club dataset to predict loan default. Live Streamlit demo with sliders for borrower features and real-time scoring. AUC 0.71 on a held-out test set.',
+      'LightGBM model that estimates default probability on Lending Club personal loans, with a live Streamlit app you can poke at. AUC 0.71.',
     tags: ['Python', 'LightGBM', 'scikit-learn', 'pandas', 'Streamlit'],
     href: '/apps/loan-default',
   },

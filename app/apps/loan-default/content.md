@@ -1,20 +1,20 @@
 # Loan Default Predictor
 
-> A LightGBM model that estimates default probability for Lending Club personal loans, served as a live Streamlit web app.
+> LightGBM model that estimates default probability for Lending Club personal loans, with a live Streamlit app you can poke at.
 
-A small end-to-end ML project built on the public Lending Club historical loan dataset. The model takes borrower features at loan origination and returns the probability that the loan will be charged off rather than fully repaid. The deployed Streamlit app lets anyone poke sliders and watch the prediction update.
-
----
-
-## Why this project
-
-Most of my paid ML work is regulated and not shippable to a portfolio. This is a deliberately small public project that mirrors the kind of work I do day to day — tabular data, gradient-boosted trees, careful feature engineering around leakage, and an interactive demo built around the model.
+**[Try the live demo →](https://loandefaultpredictor-rayjackcb.streamlit.app)**
 
 ---
 
-## Tech stack
+## Why I built it
 
-| Layer | Technology |
+Most of the ML I do at PNC isn't shippable to a portfolio. Regulated data, internal-only outputs, all of it stays inside the bank. So I picked a public dataset that's the same *shape* of problem and rebuilt it in the open. Tabular features, binary outcome, gradient-boosted tree. Same skeleton, public data.
+
+---
+
+## Stack
+
+| Layer | What |
 |---|---|
 | Language | Python 3.12 |
 | Modeling | LightGBM 4.5 |
@@ -24,27 +24,31 @@ Most of my paid ML work is regulated and not shippable to a portfolio. This is a
 
 ---
 
-## Dataset
+## The dataset
 
-**Lending Club accepted loans, 2007–2018Q4.** ~2.2M rows of approved loans with their final outcome (`Fully Paid` or `Charged Off`), plus borrower features captured at the time of origination.
-
-Public dataset, available on Kaggle.
+Lending Club's accepted-loans dataset on Kaggle. About 2.2M approved loans from 2007 through 2018 Q4, with final outcomes and the features that were known at origination. Roughly 80% paid off, 20% charged off.
 
 ---
 
 ## Feature engineering
 
-- **Filtered to settled loans only.** In-flight loans (`Current`, `In Grace Period`, etc.) were excluded since the outcome is not yet known.
-- **Parsed text-encoded numerics.** `term` ("36 months" → 36), `int_rate` ("13.5%" → 13.5), `revol_util`, and `emp_length` ("10+ years" → 10).
-- **Dropped leakage columns.** `total_pymnt`, `recoveries`, `last_pymnt_*`, `out_prncp` and similar fields are populated post-default and would short-circuit the model. Removing them is the most consequential modeling decision in the project.
-- **Twenty originate-time features kept**, including loan amount, term, interest rate, FICO range, DTI, employment length, home ownership, purpose, state, and prior credit history (delinquencies, inquiries, open accounts, public records, revolving balance and utilization).
-- **Stratified subsample to 10%** (~135K rows) of the full dataset for fast iteration. Final-data AUC came within a couple of percentage points of full-data AUC in spot checks.
+The whole project lives or dies here.
+
+**The leakage trap.** Lending Club's data includes columns like `total_pymnt`, `recoveries`, `last_pymnt_d`, `out_prncp`. These only get populated *after* a loan defaults. Leave them in and the model just reads them off, "predicts" 0.99 AUC, and is completely useless on a real loan that hasn't defaulted yet. Dropping them before the model ever sees the data is the single most important thing the training script does.
+
+**Filter to settled loans.** `Current` and `In Grace Period` rows go in the bin. We don't know yet what happened to them, so they're noise.
+
+**Parse the text-encoded numerics.** Lending Club stores `term` as `"36 months"`, `int_rate` as `"13.5%"`, `emp_length` as `"10+ years"`. Cast to numbers up front.
+
+**Twenty features kept**, all known at origination: loan amount, term, interest rate, FICO range, DTI, employment length, home ownership, purpose, state, and the usual credit-history columns.
+
+**Subsample to 10%.** Around 135K rows is more than enough. Full data trains ten times slower and the AUC barely budges.
 
 ---
 
 ## Modeling
 
-LightGBM classifier, 500 trees, learning rate 0.05, num_leaves 63, early stopping on validation AUC. Categorical features (term, grade, home ownership, verification status, purpose, state) handled natively by LightGBM, no manual encoding. 80/20 train/test split, stratified by default outcome.
+LightGBM classifier, 500 trees, learning rate 0.05, num_leaves 63, early stopping on validation AUC. Categoricals (term, grade, home ownership, verification status, purpose, state) go in raw — LightGBM handles them natively, no one-hot, no target encoding. 80/20 train/test split, stratified.
 
 ### Results
 
@@ -55,9 +59,9 @@ LightGBM classifier, 500 trees, learning rate 0.05, num_leaves 63, early stoppin
 | Test set size | 26,907 |
 | Default rate (test) | 19.96% |
 
-AUC of 0.714 sits in the typical range reported in the Lending Club literature (0.70–0.75), so the model is performing as expected — strong enough to be useful, not artificially boosted by leaked features.
+0.714 AUC is right where the published Lending Club work lands (0.70–0.75 is the usual range). If I were getting 0.85+ I'd assume I missed a leakage column and start over.
 
-### Diagnostic plots
+### Plots
 
 <p align="center">
   <img src="/apps/loan-default/roc.png" width="48%" alt="ROC curve">
@@ -70,18 +74,12 @@ AUC of 0.714 sits in the typical range reported in the Lending Club literature (
 
 ---
 
-## Notes on feature importance
+## About that importance chart
 
-Gain-based feature importance ranks `addr_state` near the top. That's a known quirk of high-cardinality categoricals in LightGBM — the model gets many splits from a 50-state feature, which inflates total gain. SHAP values would tell a more honest story about per-prediction influence; that's a planned follow-up.
-
----
-
-## Live demo
-
-Try it at **[loandefaultpredictor-rayjackcb.streamlit.app](https://loandefaultpredictor-rayjackcb.streamlit.app)**. Move the sliders and dropdowns in the sidebar to see the prediction update live.
+`addr_state` looks like the top feature. It's not, really. That's a known quirk where LightGBM's gain importance overcounts high-cardinality categoricals. With 50 states the model gets a lot of splits from that one feature, and gain just adds them all together. SHAP values would give a more honest per-prediction story. On the list.
 
 ---
 
 ## Source
 
-Repo at [github.com/rjcb-commits/loan_default_predictor](https://github.com/rjcb-commits/loan_default_predictor).
+[github.com/rjcb-commits/loan_default_predictor](https://github.com/rjcb-commits/loan_default_predictor)
