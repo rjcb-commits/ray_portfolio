@@ -24,6 +24,23 @@ export const metadata: Metadata = {
     description:
       'Data scientist at a top-10 US bank, building production ML for Reg-E and Reg-Z dispute analytics and the Tableau dashboards leadership uses to track operational risk.',
     type: 'website',
+    url: 'https://rayzjack.com',
+    siteName: 'Raymond Jack',
+    images: [
+      {
+        url: '/og.png',
+        width: 1731,
+        height: 909,
+        alt: 'Raymond Jack — Data Scientist · Applied ML & Analytics',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Raymond Jack — Data Scientist',
+    description:
+      'Data scientist at a top-10 US bank, building production ML for Reg-E and Reg-Z dispute analytics.',
+    images: ['/og.png'],
   },
   icons: {
     icon: '/favicon.svg',

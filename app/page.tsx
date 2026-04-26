@@ -4,6 +4,7 @@ const publicApps = [
     description:
       'LightGBM model that estimates default probability on Lending Club personal loans, with a live Streamlit app you can poke at. AUC 0.71.',
     tags: ['Python', 'LightGBM', 'scikit-learn', 'pandas', 'Streamlit'],
+    image: '/loan-default-icon.png',
     href: '/apps/loan-default',
   },
   {
