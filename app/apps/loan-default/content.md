@@ -74,9 +74,23 @@ LightGBM classifier, 500 trees, learning rate 0.05, num_leaves 63, early stoppin
 
 ---
 
-## About that importance chart
+## What I tried before settling on this model
 
-`addr_state` looks like the top feature. It's not, really. That's a known quirk where LightGBM's gain importance overcounts high-cardinality categoricals. With 50 states the model gets a lot of splits from that one feature, and gain just adds them all together. SHAP values would give a more honest per-prediction story. On the list.
+A handful of experiments worth knowing about. The notebooks are in [`notebooks/`](https://github.com/rjcb-commits/loan_default_predictor/tree/main/notebooks).
+
+**Five models head-to-head** (notebook 03). LightGBM defaults: 0.7132 AUC. CatBoost: 0.7191 (the winner, but 25-40x slower to train). XGBoost: 0.7137. Random Forest: 0.7034. **Logistic regression with proper preprocessing: 0.7116** — within 0.0075 AUC of the best model. The gradient-boosting machinery barely beats a careful linear model on this dataset, which is consistent with how credit-default data tends to look — the signal is largely linear in the right features.
+
+**Feature engineering** (notebook 04). Adding `mort_acc`, `pub_rec_bankruptcies`, `application_type`, plus derived ratios (loan-to-income, payment-to-income, credit history length): +0.0036 AUC.
+
+**Hyperparameter tuning** (notebook 05). Optuna search across 15 trials on LightGBM: +0.0034 AUC over defaults.
+
+**Calibration** (notebook 06). LightGBM's predicted probabilities were already well-calibrated for this data; isotonic on top didn't help. The percentages in the live demo are meaningful as-is.
+
+Combined headroom over the deployed model: about 0.007 AUC, all within run-to-run noise. I left the deployed v1 in place. The bigger lift is in things I haven't tried yet — text features on `desc`/`emp_title`, time-aware vintage splitting, stacking — which published Lending Club work suggests are worth 0.01-0.03 AUC each.
+
+### One thing about the gain-importance chart above
+
+It ranks `addr_state` near the top. Don't believe it. Gain importance just counts how often the model splits on each feature, and with 50 states LightGBM gets dozens of splits per tree from that one column. The deployed demo uses per-prediction contributions instead (LightGBM's `pred_contrib`, mathematically equivalent to SHAP for tree models) which shows what moved *this specific borrower's* prediction — much more honest than what the tree builder happened to fixate on globally.
 
 ---
 
