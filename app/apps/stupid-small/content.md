@@ -17,23 +17,23 @@
 
 ## Why Stupid Small exists
 
-Most "productivity" apps optimise for cataloguing your overwhelm. You end up with a perfectly-tagged backlog of tasks you still won't start, because the tasks are still **too big**. Writing a thesis. Cleaning the garage. Filing taxes. The friction isn't organisation — it's that step one is invisible.
+Most "productivity" apps are good at cataloguing tasks. They're not good at making you start them. You end up with a tagged, sorted backlog you still won't open, because the tasks themselves are still too big: writing a thesis, cleaning the garage, filing taxes. The problem isn't organisation. It's that step one is invisible.
 
-Stupid Small flips that. You don't write down "Write thesis." You ask the AI to crack the boulder. It hands back five tiny steps:
+Stupid Small flips that. Instead of writing down "Write thesis," you ask the AI to break it apart. It hands back five tiny steps:
 
 1. Open the doc and re-read the last paragraph (2 min)
 2. Write three bullets for the next section (3 min)
 3. Turn the first bullet into a sentence (3 min)
-4. Take a 5-minute break — you earned it
+4. Take a 5-minute break, you earned it
 5. Turn the second bullet into a sentence (3 min)
 
-That first step is **always doable.** That's the whole product.
+That first step is always doable.
 
 - **Stupidly small steps.** The AI is system-prompted to never propose a step longer than 5 minutes.
-- **One step at a time.** The focus screen shows *only* the current step — no list, no scrolling, no checkboxes.
-- **Wall-clock focus timer.** Picks a duration based on the AI's estimate, runs Do Not Disturb while active, immune to coroutine drift.
-- **Built-in escape hatch.** If a step still feels too big mid-timer, tap "Break it down" and the AI will hand you something even smaller.
-- **Confetti.** Every finished step gets a celebration. Habit-forming on purpose.
+- **One step at a time.** The focus screen shows only the current step. No list, no scrolling, no checkboxes.
+- **Wall-clock focus timer.** Picks a duration based on the AI's estimate. Runs Do Not Disturb while active. Immune to coroutine drift.
+- **Built-in escape hatch.** If a step still feels too big mid-timer, tap "Break it down" and the AI hands you something even smaller.
+- **Confetti.** Every finished step gets a celebration.
 
 ---
 
@@ -41,37 +41,37 @@ That first step is **always doable.** That's the whole product.
 
 ### Core loop
 
-- **AI task breakdown** powered by Llama 3.3 70B (Groq) via a Cloudflare Worker proxy — your API key never leaves the worker.
+- **AI task breakdown** powered by Llama 3.3 70B (Groq) via a Cloudflare Worker proxy. Your API key never leaves the worker.
 - **Per-step time estimates** the focus timer reads from. A 3-minute step gets a 3-minute timer.
 - **"Use these steps" → straight into focus.** Save flow drops you on the first step instead of a task list, removing one click between intent and action.
 - **One-step-at-a-time focus screen** with start/pause/done, current step text, optional task title, and the count "Step 2 of 5".
 - **Mid-step breakdown.** Stuck? Tap **Break it down**, get an even smaller AI suggestion, current step is shifted back so the new step fires first.
-- **Celebration screen** after each step — confetti, encouragement, optional "next step" button when one exists.
-- **Recurring tasks.** Mark a task daily / weekly and it auto-clones with fresh micro-steps when complete.
+- **Celebration screen** after each step. Confetti, encouragement, and a "next step" button when one exists.
+- **Recurring tasks.** Mark a task daily or weekly and it auto-clones with fresh micro-steps when complete.
 - **Soft-delete with undo.** Swipe to delete shows a snackbar; orphans get purged on app launch so a missed dismiss doesn't leak rows.
 
 ### Built around finishing
 
-- **Wall-clock-based timer** — tracks elapsed via `System.currentTimeMillis()` deltas, not coroutine `delay()`. Survives doze, app backgrounding, and slow recompositions without drift.
+- **Wall-clock-based timer.** Tracks elapsed time via `System.currentTimeMillis()` deltas, not coroutine `delay()`. Survives doze, app backgrounding, and slow recompositions without drift.
 - **Auto Do Not Disturb.** Starting the timer flips DnD on; pausing or finishing flips it off. No nagging notifications during focus.
-- **Leave guard.** Pressing back during an active timer shows a confirmation dialog — accidental dismiss can't lose your progress.
+- **Leave guard.** Pressing back during an active timer shows a confirmation dialog. Accidental dismiss can't lose your progress.
 - **Daily reminder** at a user-picked time (Material 3 time picker, 12-hour with AM/PM display).
-- **Streak tracking + stats screen** — total tasks finished, total steps completed, total focus time, current/longest streak.
+- **Streak tracking + stats screen.** Total tasks finished, total steps completed, total focus time, current and longest streak.
 
 ### Polish
 
 - **5 hand-tuned colour themes** × light / dark variants (Sunset, Ocean, Forest, Lavender, Rose), each with consistent Material 3 ColorScheme.
 - **Home-screen widget** (Glance + Material 3) showing the next pending step with one-tap launch into focus.
 - **Animated boulder + smiling cubes empty state** on the task list (commissioned art, not a stock illustration).
-- **Confetti celebration engine** — particle system with continuous spawn loop, gravity tuned for natural fall, capped at 350-450 live particles to keep frame times tight.
-- **Premium tier** via Google Play Billing v7 — unlocks higher AI request quota and is fully optional. The base loop works without it.
+- **Confetti celebration engine.** Particle system with continuous spawn loop, gravity tuned for natural fall, capped at 350-450 live particles to keep frame times tight.
+- **Premium tier** via Google Play Billing v7. Unlocks a higher AI request quota and is fully optional. The base loop works without it.
 
 ### Privacy
 
-- **Database lives on-device.** Tasks, micro-steps, completion timestamps, streaks — all in a single Room database in app-private storage.
-- **AI calls go through a Cloudflare Worker** that proxies to Groq. The worker logs request counts only — no task content is persisted server-side.
+- **Database lives on-device.** Tasks, micro-steps, completion timestamps, and streaks all live in a single Room database in app-private storage.
+- **AI calls go through a Cloudflare Worker** that proxies to Groq. The worker logs request counts only. No task content is persisted server-side.
 - **No analytics SDK, no crash reporter, no ad networks.** The only third-party code that runs is Google Play Billing (loaded only if you tap the Premium upgrade button).
-- **Uninstall removes everything.** No cloud sync = no shadow copy of your tasks living somewhere else.
+- **Uninstall removes everything.** No cloud sync, no shadow copy of your tasks living somewhere else.
 
 ---
 
@@ -142,15 +142,15 @@ app/src/main/java/com/stupidsmall/app/
 
 ### Notable design decisions
 
-- **AI proxy, not direct API.** The app never sees Groq credentials. A small Cloudflare Worker holds the API key, validates an app-side shared secret, and forwards prompts. Lets us swap models, rate-limit, or replace providers without an app update.
+- **AI proxy, not direct API.** The app never sees Groq credentials. A small Cloudflare Worker holds the API key, validates an app-side shared secret, and forwards prompts. This lets us swap models, rate-limit, or replace providers without an app update.
 - **Wall-clock timer over coroutine `delay`.** A 15-minute focus session run with `delay(1000)` drifts noticeably under doze, recomposition pressure, or app-backgrounding. The current implementation polls `System.currentTimeMillis() - startMillis` so the displayed remaining time reflects reality, not loop iterations.
-- **DnD only while running.** The timer flips Do Not Disturb on at start and off at pause / done / VM `onCleared()`. Crash mid-session and DnD still gets cleared on next launch — the cleanup runs in `onCreate` of `MainActivity` defensively.
+- **DnD only while running.** The timer flips Do Not Disturb on at start and off at pause, done, or VM `onCleared()`. Crash mid-session and DnD still gets cleared on next launch. The cleanup runs in `onCreate` of `MainActivity` defensively.
 - **Two-step add-task flow.** Title → AI suggestions on a second screen. Lets users see and tweak steps before committing instead of locking them in. "Use these steps" hands them straight to focus on step 1; "Save without focus" lands them back on the task list.
-- **Step 1 is always doable.** The AI system prompt enforces a 5-minute hard cap and strongly prefers 2–3 minute steps. If the model proposes a longer step, the prompt tells it to split. Users can also tap **Break it down** mid-timer to ask for an even smaller version.
-- **Soft delete + auto-purge.** Swipe-to-delete sets `isDeleted = true` and shows a snackbar. The active query filters those out. On VM init we purge any rows still flagged from a prior session — handles "swiped, then force-quit" without leaking data.
-- **Confetti uses an `ArrayList` + `key(tick)`.** Started with `mutableStateListOf` for ergonomics — performance tanked at >100 particles. Switched to a plain `ArrayList` for O(1) swap-remove, but Compose stopped recomposing the canvas. Wrapping the `Canvas` in `key(tick) { … }` forces a redraw each animation frame without the SnapshotStateList overhead.
+- **Step 1 is always doable.** The AI system prompt enforces a 5-minute hard cap and strongly prefers 2-3 minute steps. If the model proposes a longer step, the prompt tells it to split. Users can also tap **Break it down** mid-timer to ask for an even smaller version.
+- **Soft delete + auto-purge.** Swipe-to-delete sets `isDeleted = true` and shows a snackbar. The active query filters those out. On VM init we purge any rows still flagged from a prior session. Handles "swiped, then force-quit" without leaking data.
+- **Confetti uses an `ArrayList` + `key(tick)`.** Started with `mutableStateListOf` for ergonomics. Performance tanked at >100 particles. Switched to a plain `ArrayList` for O(1) swap-remove, but Compose stopped recomposing the canvas. Wrapping the `Canvas` in `key(tick) { … }` forces a redraw each animation frame without the SnapshotStateList overhead.
 - **Glance widget reads from Room directly** via a Hilt-injected repository, not a duplicate persistence layer. Updates fire when `WorkManager` ticks the reminder or when the user saves a task.
-- **Single-activity navigation** with route-level transition overrides — celebrations fade in (more triumphant) while the rest of the app slides horizontally (clear forward / back grammar).
+- **Single-activity navigation** with route-level transition overrides. Celebrations fade in (more triumphant) while the rest of the app slides horizontally (clear forward and back grammar).
 
 ---
 
@@ -179,7 +179,7 @@ GEMINI_API_KEY=
 OPENROUTER_API_KEY=
 ```
 
-Without `PROXY_URL`, AI breakdowns fail loudly with a quota / network error — by design. You're not meant to ship a build with no AI backend.
+Without `PROXY_URL`, AI breakdowns fail loudly with a quota or network error. That's by design. You're not meant to ship a build with no AI backend.
 
 ### Debug build
 
@@ -238,13 +238,26 @@ The worker:
 
 ---
 
+## Privacy
+
+The full privacy policy is hosted at **https://stupidsmall-privacy.pages.dev/privacy.html**.
+
+Short version:
+- Tasks and micro-steps live in a Room database on your device. They never leave it.
+- AI prompts are sent to a Cloudflare Worker that proxies to Groq. Used to generate the response, not stored.
+- No analytics, crash reporting, or ad SDKs.
+- Google Play Billing only loads if you tap the Premium upgrade.
+- Uninstalling the app removes all your data.
+
+---
+
 ## Roadmap
 
 Ideas under consideration for v1.x:
 
 - Cross-device sync (opt-in, end-to-end encrypted) for users who want it
 - Calendar integration to surface "what's the next stupidly small thing for this meeting prep"
-- Voice-first entry — describe a task aloud, get a breakdown back
+- Voice-first entry. Describe a task aloud, get a breakdown back.
 - Smarter recurring tasks (skip-if-completed-yesterday, custom RRULEs)
 - Apple Watch / Wear OS focus timer companion
 
