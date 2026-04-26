@@ -8,7 +8,7 @@
 
 ## Why I built it
 
-Most of the ML I do at PNC isn't shippable to a portfolio. Regulated data, internal-only outputs, all of it stays inside the bank. So I picked a public dataset that's the same *shape* of problem and rebuilt it in the open. Tabular features, binary outcome, gradient-boosted tree. Same skeleton, public data.
+Most of my professional ML work is on regulated banking data and can't go on a portfolio. This project rebuilds the same shape of problem on a public dataset: tabular credit features at origination, gradient-boosted tree, binary default outcome.
 
 ---
 
