@@ -37,6 +37,17 @@ export default async function LoanDefaultPage() {
           </a>
         </div>
       </div>
+      <a
+        href="https://loandefaultpredictor-rayjackcb.streamlit.app"
+        target="_blank"
+        rel="noreferrer"
+        className="wrap heroShot"
+      >
+        <img
+          src="/apps/loan-default/hero.png"
+          alt="Loan Default Predictor live demo screenshot — risk gauge, loan economics, feature contributions"
+        />
+      </a>
       <article className="wrap prose" dangerouslySetInnerHTML={{ __html: html }} />
       <footer className="footer wrap">
         <div>© {new Date().getFullYear()} Raymond Jack</div>
