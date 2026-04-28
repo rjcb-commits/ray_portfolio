@@ -144,9 +144,6 @@ export default function HomePage() {
           <a className="btn primary" href="#apps">
             View work
           </a>
-          <a className="btn secondary" href="/RaymondJack_Resume.pdf" download>
-            Download resume
-          </a>
           <a className="btn secondary" href="mailto:rayjackcb@gmail.com">
             Get in touch
           </a>
