@@ -3,10 +3,29 @@ import path from 'node:path'
 import type { Metadata } from 'next'
 import { marked } from 'marked'
 
+const PAGE_TITLE = 'Niner'
+const PAGE_DESC =
+  'A clean, calm sudoku for Android. One daily puzzle, five modes, zero ads, zero tracking.'
+const PAGE_URL = 'https://rayzjack.com/apps/niner'
+const PAGE_IMAGE = '/niner-icon.png'
+
 export const metadata: Metadata = {
-  title: 'Niner — Raymond Jack',
-  description:
-    'A clean, calm sudoku for Android. One daily puzzle, five modes, zero ads, zero tracking.',
+  title: `${PAGE_TITLE} | Raymond Jack`,
+  description: PAGE_DESC,
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    type: 'article',
+    url: PAGE_URL,
+    siteName: 'Raymond Jack',
+    images: [{ url: PAGE_IMAGE, alt: `${PAGE_TITLE} icon` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    images: [PAGE_IMAGE],
+  },
 }
 
 export default async function NinerPage() {

@@ -1,4 +1,4 @@
-# Niner — the daily sudoku
+# Niner: the daily sudoku
 
 > A clean, calm sudoku game for Android. One daily puzzle, five modes, zero ads, zero tracking.
 
@@ -34,21 +34,21 @@ Your puzzles, stats, and achievements live in a single SharedPreferences file on
 
 ### Game
 
-- **5 difficulties** — Beginner, Easy, Medium, Hard, Expert. Each has its own clue-count target and hint cap.
+- **5 difficulties.** Beginner, Easy, Medium, Hard, Expert. Each has its own clue-count target and hint cap.
 - **5 modes**
-  - **Classic** — 3 mistakes, normal hint count
-  - **Strict** — 1 mistake ends the game
-  - **Coach** — unlimited hints + mistakes (great for learning)
-  - **Speed** — countdown clock; every correct cell adds 4 seconds
-  - **Killer** — cages with target sums layered on top of standard sudoku rules
-- **Daily puzzle** — one shared puzzle for every player, every day, with a 12-week activity heatmap and streak tracking
+  - **Classic.** 3 mistakes, normal hint count
+  - **Strict.** 1 mistake ends the game
+  - **Coach.** Unlimited hints and mistakes (great for learning)
+  - **Speed.** Countdown clock; every correct cell adds 4 seconds
+  - **Killer.** Cages with target sums layered on top of standard sudoku rules
+- **Daily puzzle.** One shared puzzle for every player, every day, with a 12-week activity heatmap and streak tracking
 - **Per-mode-per-difficulty best-time tracking** + average win time + win rate
 - **16 achievements** with bundled badge artwork
 
 ### Polish
 
 - **Five hand-tuned colour themes** × light/dark variants (Ember, Electric, Neon Night, Citrus Punch, Hyperdrive)
-- **Six celebration styles** — Confetti, Fireworks, Bubbles, Cherry Blossoms, Emoji Rain, Minimal
+- **Six celebration styles.** Confetti, Fireworks, Bubbles, Cherry Blossoms, Emoji Rain, Minimal
 - **Wrong entries don't stick to the board.** They shake and vanish, so the board always reflects what you actually know.
 - **Peer + same-digit highlighting** for quick visual scanning
 - **Daily-streak heatmap** with empty-state preview grid
@@ -125,7 +125,7 @@ app/src/main/java/com/ninersudoku/
 - **The Killer hint engine is cage-aware.** When the cage constraint alone narrows a cell to one digit, the hint dialog explains in cage terms ("This cage needs 14. With 9 already in, the last cell must be 5") instead of pretending it's a standard naked single.
 - **"New puzzle" generates fresh, never restarts the same puzzle.** A "restart this puzzle" button would let players pre-scout, then run again to fake a best time or unlock Perfectionist/Flawless cheaply. The overflow menu always ships a different puzzle.
 - **Process-death restore via `SharedPreferences`.** Every cell entry persists the full game state to a single key (`saved_game`). `am force-stop` + relaunch lands the player on the menu with a Continue card pointing at the exact board they left.
-- **Adaptive launcher icon** with dedicated `mipmap-anydpi-v26` background colour matching the splash screen — no flicker on cold launch.
+- **Adaptive launcher icon** with dedicated `mipmap-anydpi-v26` background colour matching the splash screen, so no flicker on cold launch.
 
 ---
 
@@ -199,8 +199,8 @@ Things deferred for v1.x:
 
 - Smarter hint techniques (naked pair, X-Wing) for Hard / Expert
 - Per-mode-per-difficulty win counts (the "Cage Master" achievement currently uses "won Killer at all 5 difficulties" as a proxy for "won 10 Killer puzzles")
-- Tablet-optimised layout — the phone layout works on tablets but doesn't take advantage of the extra width
-- Localisation — strings are inline; needs extraction to `strings.xml` first
+- Tablet-optimised layout. The phone layout works on tablets but doesn't take advantage of the extra width
+- Localisation. Strings are inline; needs extraction to `strings.xml` first
 
 ---
 

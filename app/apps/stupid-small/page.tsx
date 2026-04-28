@@ -3,10 +3,29 @@ import path from 'node:path'
 import type { Metadata } from 'next'
 import { marked } from 'marked'
 
+const PAGE_TITLE = 'Stupid Small'
+const PAGE_DESC =
+  'AI-powered Android app that breaks scary tasks into stupidly small steps you actually finish.'
+const PAGE_URL = 'https://rayzjack.com/apps/stupid-small'
+const PAGE_IMAGE = '/stupid-small-icon.png'
+
 export const metadata: Metadata = {
-  title: 'Stupid Small — Raymond Jack',
-  description:
-    'AI-powered Android app that breaks scary tasks into stupidly small steps you actually finish.',
+  title: `${PAGE_TITLE} | Raymond Jack`,
+  description: PAGE_DESC,
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    type: 'article',
+    url: PAGE_URL,
+    siteName: 'Raymond Jack',
+    images: [{ url: PAGE_IMAGE, alt: `${PAGE_TITLE} icon` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    images: [PAGE_IMAGE],
+  },
 }
 
 export default async function StupidSmallPage() {

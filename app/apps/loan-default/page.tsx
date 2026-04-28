@@ -3,10 +3,29 @@ import path from 'node:path'
 import type { Metadata } from 'next'
 import { marked } from 'marked'
 
+const PAGE_TITLE = 'Loan Default Predictor'
+const PAGE_DESC =
+  'LightGBM model predicting Lending Club loan defaults (AUC 0.71), served as a live Streamlit demo.'
+const PAGE_URL = 'https://rayzjack.com/apps/loan-default'
+const PAGE_IMAGE = '/apps/loan-default/hero.png'
+
 export const metadata: Metadata = {
-  title: 'Loan Default Predictor — Raymond Jack',
-  description:
-    'LightGBM model predicting Lending Club loan defaults, served as a live Streamlit demo.',
+  title: `${PAGE_TITLE} | Raymond Jack`,
+  description: PAGE_DESC,
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    type: 'article',
+    url: PAGE_URL,
+    siteName: 'Raymond Jack',
+    images: [{ url: PAGE_IMAGE, alt: `${PAGE_TITLE} screenshot` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    images: [PAGE_IMAGE],
+  },
 }
 
 export default async function LoanDefaultPage() {

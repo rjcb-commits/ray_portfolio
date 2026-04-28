@@ -1,4 +1,4 @@
-# Stupid Small — beat procrastination by going stupidly small
+# Stupid Small: beat procrastination by going stupidly small
 
 > An AI-powered Android app that breaks scary tasks into stupidly small steps you'll actually finish. Kotlin + Jetpack Compose, Material 3, on-device persistence, AI-assisted breakdowns.
 

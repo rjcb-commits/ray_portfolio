@@ -3,10 +3,29 @@ import path from 'node:path'
 import type { Metadata } from 'next'
 import { marked } from 'marked'
 
+const PAGE_TITLE = 'CFPB Consumer Complaints Dashboard'
+const PAGE_DESC =
+  'P2P / money-transfer disputes resolve with monetary relief at 4.96%, vs 14-23% for card products. Five years of CFPB complaint data with Block / Cash App as the standout outlier.'
+const PAGE_URL = 'https://rayzjack.com/apps/cfpb-complaints'
+const PAGE_IMAGE = '/dash_icon.png'
+
 export const metadata: Metadata = {
-  title: 'CFPB Consumer Complaints Dashboard — Raymond Jack',
-  description:
-    'Tableau dashboard on the CFPB Consumer Complaint Database, surfacing the products, issues, and companies driving consumer financial complaints from 2012 to present.',
+  title: `${PAGE_TITLE} | Raymond Jack`,
+  description: PAGE_DESC,
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    type: 'article',
+    url: PAGE_URL,
+    siteName: 'Raymond Jack',
+    images: [{ url: PAGE_IMAGE, alt: `${PAGE_TITLE} icon` }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: PAGE_TITLE,
+    description: PAGE_DESC,
+    images: [PAGE_IMAGE],
+  },
 }
 
 const TABLEAU_EMBED_URL: string | null =
