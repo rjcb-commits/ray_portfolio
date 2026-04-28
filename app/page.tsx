@@ -1,4 +1,4 @@
-const publicApps = [
+const dataScienceProjects = [
   {
     title: 'CFPB Complaints Dashboard',
     description:
@@ -15,6 +15,9 @@ const publicApps = [
     image: '/loan-default-icon.png',
     href: '/apps/loan-default',
   },
+]
+
+const sideProjects = [
   {
     title: 'Stupid Small',
     description:
@@ -141,6 +144,9 @@ export default function HomePage() {
           <a className="btn primary" href="#apps">
             View work
           </a>
+          <a className="btn secondary" href="/RaymondJack_Resume.pdf" download>
+            Download resume
+          </a>
           <a className="btn secondary" href="mailto:rayjackcb@gmail.com">
             Get in touch
           </a>
@@ -169,10 +175,23 @@ export default function HomePage() {
         <div className="sectionHead">
           <div className="sectionLabel">Work</div>
           <h2>Selected work</h2>
-          <p>A live ML demo plus two native Android apps.</p>
+          <p>Public-data analytics and ML projects that mirror the kind of work I do at the bank.</p>
         </div>
         <div className="grid3">
-          {publicApps.map((project) => (
+          {dataScienceProjects.map((project) => (
+            <ProjectCard key={project.title} {...project} />
+          ))}
+        </div>
+      </section>
+
+      <section id="side" className="wrap sectionBlock">
+        <div className="sectionHead">
+          <div className="sectionLabel">Side projects</div>
+          <h2>Outside the day job</h2>
+          <p>Two native Android apps shipped on my own time.</p>
+        </div>
+        <div className="grid3">
+          {sideProjects.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
         </div>
