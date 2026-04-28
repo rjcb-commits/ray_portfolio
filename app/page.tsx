@@ -20,6 +20,7 @@ const dataScienceProjects = [
     description:
       'K-means on per-100-possession stats finds eight player archetypes in the 2024-25 season. None of them line up with the traditional five positions.',
     tags: ['Python', 'scikit-learn', 'KMeans', 'PCA', 'Streamlit', 'nba_api'],
+    image: '/bball_icon.png',
     href: '/apps/nba-archetypes',
   },
 ]
