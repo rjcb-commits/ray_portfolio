@@ -16,9 +16,13 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://rayzjack.com'),
   title: 'Raymond Jack — Data Scientist',
   description:
     'Data scientist at a top-10 US bank, building production ML for Reg-E and Reg-Z dispute analytics and the Tableau dashboards leadership uses to track operational risk. Side projects in Android.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Raymond Jack — Data Scientist',
     description:
