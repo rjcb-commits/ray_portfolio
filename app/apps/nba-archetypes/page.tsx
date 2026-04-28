@@ -35,7 +35,7 @@ export default async function NbaArchetypesPage() {
       <div className="wrap appPageHeader">
         <a href="/" className="backLink">← Back</a>
         <a
-          href="https://github.com/rjcb-commits/nba-archetypes"
+          href="https://github.com/rjcb-commits/nba_archetypes"
           target="_blank"
           rel="noreferrer"
           className="repoLink"

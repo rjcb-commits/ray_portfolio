@@ -65,4 +65,4 @@ The prepaid line shows a clear spike in late 2023 / early 2024. That's American 
 
 ## Source
 
-[github.com/rjcb-commits/cfpb-complaints-dashboard](https://github.com/rjcb-commits/cfpb-complaints-dashboard)
+[github.com/rjcb-commits/cfpb_complaints_dashboard](https://github.com/rjcb-commits/cfpb_complaints_dashboard)

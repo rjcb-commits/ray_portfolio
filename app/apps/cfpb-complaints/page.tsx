@@ -41,7 +41,7 @@ export default async function CfpbPage() {
       <div className="wrap appPageHeader">
         <a href="/" className="backLink">← Back</a>
         <a
-          href="https://github.com/rjcb-commits/cfpb-complaints-dashboard"
+          href="https://github.com/rjcb-commits/cfpb_complaints_dashboard"
           target="_blank"
           rel="noreferrer"
           className="repoLink"

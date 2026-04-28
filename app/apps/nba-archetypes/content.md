@@ -66,4 +66,4 @@ I'd planned to scrape basketball-reference, but their site blocks datacenter IPs
 
 ## Source
 
-Repo: [github.com/rjcb-commits/nba-archetypes](https://github.com/rjcb-commits/nba-archetypes)
+Repo: [github.com/rjcb-commits/nba_archetypes](https://github.com/rjcb-commits/nba_archetypes)
