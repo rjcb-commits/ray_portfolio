@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 const TABLEAU_EMBED_URL: string | null =
-  'https://public.tableau.com/views/CFPBP2PResolutionGap/CFPBP2PComplaints?:embed=y&:display_count=yes&:showVizHome=no'
+  'https://public.tableau.com/views/CFPBP2PResolutionGap/CFPBP2PComplaints?:embed=y&:display_count=no&:showVizHome=no&:toolbar=no&:tabs=no'
 
 export default async function CfpbPage() {
   const file = path.join(process.cwd(), 'app/apps/cfpb-complaints/content.md')
@@ -36,7 +36,7 @@ export default async function CfpbPage() {
           <div
             style={{
               position: 'relative',
-              paddingBottom: '62%',
+              paddingBottom: '72%',
               height: 0,
               overflow: 'hidden',
               borderRadius: 12,

@@ -4,6 +4,7 @@ const publicApps = [
     description:
       'Tableau dashboard on five years of CFPB complaint data, surfacing a structural gap in monetary relief between P2P and card disputes. Live on Tableau Public.',
     tags: ['Python', 'pandas', 'pyarrow', 'Tableau', 'Tableau Public'],
+    image: '/dash_icon.png',
     href: '/apps/cfpb-complaints',
   },
   {
