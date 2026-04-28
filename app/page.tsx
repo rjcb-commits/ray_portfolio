@@ -1,5 +1,12 @@
 const publicApps = [
   {
+    title: 'CFPB Complaints Dashboard',
+    description:
+      'Tableau dashboard on five years of CFPB complaint data, surfacing a structural gap in monetary relief between P2P and card disputes. Live on Tableau Public.',
+    tags: ['Python', 'pandas', 'pyarrow', 'Tableau', 'Tableau Public'],
+    href: '/apps/cfpb-complaints',
+  },
+  {
     title: 'Loan Default Predictor',
     description:
       'LightGBM model that estimates default probability on Lending Club personal loans, with a live Streamlit app you can poke at. AUC 0.71.',
