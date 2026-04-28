@@ -2,7 +2,7 @@
 
 > Cluster 322 NBA players on per-100-possession and advanced stats. Eight archetypes show up. None of them line up cleanly with the traditional PG / SG / SF / PF / C labels.
 
-**[Try the live app →](https://nba-archetypes.streamlit.app/)**
+**[Try the live app →](https://nbaarchetypes.streamlit.app/)**
 
 ---
 
