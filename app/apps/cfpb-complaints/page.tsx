@@ -9,9 +9,8 @@ export const metadata: Metadata = {
     'Tableau dashboard on the CFPB Consumer Complaint Database, surfacing the products, issues, and companies driving consumer financial complaints from 2012 to present.',
 }
 
-// TODO: replace with the live Tableau Public URL once the dashboard is published.
-// Dashboard embed format: https://public.tableau.com/views/<workbook>/<sheet>?:embed=y&:display_count=yes&:showVizHome=no
-const TABLEAU_EMBED_URL: string | null = null
+const TABLEAU_EMBED_URL: string | null =
+  'https://public.tableau.com/views/CFPBP2PResolutionGap/CFPBP2PComplaints?:embed=y&:display_count=yes&:showVizHome=no'
 
 export default async function CfpbPage() {
   const file = path.join(process.cwd(), 'app/apps/cfpb-complaints/content.md')
