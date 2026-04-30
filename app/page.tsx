@@ -50,9 +50,9 @@ const experience = [
     org: 'PNC Financial Services',
     meta: '2025 — Present',
     bullets: [
-      'Built an XGBoost system that catches Reg-E debit card dispute errors 10x more often than random sampling, taken through MRM validation, production deployment, and Tableau monitoring.',
+      'Built an XGBoost workflow that identifies operational errors 10x more often than random sampling, taken through validation, production deployment, and Tableau monitoring.',
       'Built the case-sampling tool QA reviewers use day to day; model scores drive risk-targeted review with a random control sample for ongoing validation.',
-      'Build Tableau dashboards leadership uses to track dispute error trends and team performance.',
+      'Build Tableau dashboards leadership uses to track operational trends, risk patterns, and team performance.',
     ],
   },
   {
@@ -144,9 +144,9 @@ export default function HomePage() {
 
       <header id="top" className="hero wrap">
         <div className="eyebrow">Data Scientist · Applied ML & Analytics</div>
-        <h1>Production ML for regulated banking. Two Android apps on the side.</h1>
+        <h1>Production ML and analytics for retail banking operations.</h1>
         <p className="lede">
-          Data scientist at a top-10 US bank. I build production models for Reg-E and Reg-Z dispute analytics and the Tableau dashboards leadership uses to track operational risk. Android apps in my spare time.
+          Data scientist with 19 years in retail banking. I build production ML, SQL/Python pipelines, and Tableau dashboards that help teams monitor performance, prioritize work, and ship better decisions. Android apps in my spare time.
         </p>
         <div className="ctaRow">
           <a className="btn primary" href="#apps">
@@ -180,7 +180,7 @@ export default function HomePage() {
         <div className="sectionHead">
           <div className="sectionLabel">Work</div>
           <h2>Selected work</h2>
-          <p>Public-data analytics and ML projects that mirror the kind of work I do at the bank.</p>
+          <p>Public-data analytics and ML projects that show how I move from raw data to useful decisions.</p>
         </div>
         <div className="grid3">
           {dataScienceProjects.map((project) => (
@@ -255,7 +255,7 @@ export default function HomePage() {
           <div className="sectionLabel">Contact</div>
           <h2>Let&apos;s connect.</h2>
           <p>
-            Always up for a conversation about data science, banking analytics, or product work. Reach out anytime.
+            Always up for a conversation about data science, analytics engineering, business intelligence, or product work. Reach out anytime.
           </p>
           <div className="ctaRow">
             <a className="btn primary" href="mailto:rayjackcb@gmail.com">

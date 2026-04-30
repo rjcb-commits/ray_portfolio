@@ -19,14 +19,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://rayzjack.com'),
   title: 'Raymond Jack — Data Scientist',
   description:
-    'Data scientist at a top-10 US bank, building production ML for Reg-E and Reg-Z dispute analytics and the Tableau dashboards leadership uses to track operational risk. Side projects in Android.',
+    'Data scientist with 19 years in retail banking. Production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations. Side projects in Android.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Raymond Jack — Data Scientist',
     description:
-      'Data scientist at a top-10 US bank, building production ML for Reg-E and Reg-Z dispute analytics and the Tableau dashboards leadership uses to track operational risk.',
+      'Data scientist with 19 years in retail banking. Production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations.',
     type: 'website',
     url: 'https://rayzjack.com',
     siteName: 'Raymond Jack',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Raymond Jack — Data Scientist',
     description:
-      'Data scientist at a top-10 US bank, building production ML for Reg-E and Reg-Z dispute analytics.',
+      'Data scientist building production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations.',
     images: ['/og.png'],
   },
   icons: {
