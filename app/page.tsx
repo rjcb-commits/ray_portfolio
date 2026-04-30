@@ -146,7 +146,7 @@ export default function HomePage() {
         <div className="eyebrow">Data Scientist · Applied ML & Analytics</div>
         <h1>Production ML and analytics for retail banking operations.</h1>
         <p className="lede">
-          Data scientist with 19 years in retail banking. I build production ML, SQL/Python pipelines, and Tableau dashboards that help teams monitor performance, prioritize work, and ship better decisions. Android apps in my spare time.
+          Data scientist with 19 years in retail banking. I build production ML, SQL/Python pipelines, and Tableau dashboards that help teams monitor performance, prioritize work, and make better decisions. Android apps in my spare time.
         </p>
         <div className="ctaRow">
           <a className="btn primary" href="#apps">
