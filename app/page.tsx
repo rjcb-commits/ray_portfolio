@@ -1,5 +1,13 @@
 const dataScienceProjects = [
   {
+    title: 'What Happened to Paul Skenes?',
+    description:
+      'Pitch-level Statcast breakdown of Skenes’ 2026 season: the ERA doubled, but FIP, whiff rates, and 11 home runs tell a more interesting story than "decline."',
+    tags: ['Statcast', 'MLB Stats API', 'Next.js', 'SVG charts', 'FIP'],
+    image: '/skenes-icon.svg',
+    href: '/apps/skenes',
+  },
+  {
     title: 'CFPB Complaints Dashboard',
     description:
       'Tableau dashboard on five years of CFPB complaint data, surfacing a structural gap in monetary relief between P2P and card disputes. Live on Tableau Public.',

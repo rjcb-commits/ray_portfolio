@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "skenes:data": "node scripts/build-skenes-data.mjs",
     "lint": "next lint"
   },
   "dependencies": {

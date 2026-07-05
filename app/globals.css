@@ -637,6 +637,152 @@ h3 {
   font-weight: 600;
 }
 
+/* Skenes dashboard */
+.skDash {
+  max-width: 760px;
+}
+
+.skUpdated {
+  font-size: 13px;
+  color: var(--subtle);
+}
+
+.skStatRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 36px 0 8px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.skStat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.skStat span {
+  display: block;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.skChartCard {
+  padding: 20px 16px 12px;
+  margin: 0 0 16px;
+}
+
+.skChartCard svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.skSplit {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+.skZoneCard {
+  padding: 16px 12px 8px;
+}
+
+.skHrList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.skHrList li {
+  margin-bottom: 5px;
+}
+
+.skHrList strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.skDot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: baseline;
+}
+
+.skTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.skTable th,
+.skTable td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.skTable th {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+
+.skDelta {
+  font-size: 11.5px;
+  color: var(--subtle);
+  margin-left: 2px;
+}
+
+.skDelta.skGood {
+  color: #2e7d4f;
+}
+
+.skDelta.skBad {
+  color: #b3402e;
+}
+
+.skFootnote {
+  font-size: 12.5px;
+  color: var(--subtle);
+  margin: 0 0 16px;
+}
+
+@media (max-width: 900px) {
+  .skStatRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skSplit {
+    grid-template-columns: 1fr;
+  }
+  .skZoneCard {
+    max-width: 340px;
+  }
+  .skTable {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 900px) {
   .grid3,
   .grid2 {
