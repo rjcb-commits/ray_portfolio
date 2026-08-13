@@ -62,8 +62,8 @@ export default function SkenesPage() {
           After back-to-back sub-2.00 ERA seasons and the 2025 NL Cy Young, Paul Skenes is sitting on a{' '}
           <strong>{s2026.era} ERA</strong> through {`${data.starts.length} starts`}. This dashboard digs into the
           pitch-level Statcast data for an explanation. The short version: the strikeout stuff is intact and his
-          FIP says he&apos;s pitched closer to a {lastStart.cumFip.toFixed(2)}, but he has already matched last
-          season&apos;s full-year home run total in about half the innings, and the fastball has lost a tick.
+          FIP says he&apos;s pitched closer to a {lastStart.cumFip.toFixed(2)}, but he has already blown past last
+          season&apos;s full-year home run total, and the fastball has lost a tick.
         </p>
 
         <div className="skStatRow">
@@ -85,11 +85,12 @@ export default function SkenesPage() {
           </div>
         </div>
 
-        <h2>The ERA says collapse. The FIP says two bad nights.</h2>
+        <h2>The ERA says collapse. The FIP says otherwise.</h2>
         <p>
           Cumulative ERA and FIP by start. Opening Day (5 ER in ⅔ of an inning against the Mets) left the ERA at
           67.50 after one start, so the chart begins at start two. From mid-April to mid-June he ran an ERA
-          between 2.36 and 3.00, then gave up seven runs in Philadelphia on July 1. Red dots mark home runs allowed: they cluster
+          between 2.36 and 3.00. Since then the rough nights have piled up: seven runs in Philadelphia on July 1,
+          then five apiece against the Cubs and Reds in late July. Red dots mark home runs allowed: they cluster
           in exactly the starts where the ERA line jumps.
         </p>
         <div className="card skChartCard">
@@ -124,7 +125,7 @@ export default function SkenesPage() {
         <h2>The arsenal, 2025 vs 2026</h2>
         <p>
           Whiff rate is down on nearly every pitch. The changeup and slider still miss bats; the sinker&apos;s
-          whiff rate has collapsed from 15% to 8% and the splitter is getting hit at a .366 clip. The curveball,
+          whiff rate has collapsed from 15% to 7% and the splitter is getting hit at a .333 clip. The curveball,
           a real weapon in 2024, is basically shelved at under 1% usage.
         </p>
         <table className="skTable">
@@ -172,8 +173,9 @@ export default function SkenesPage() {
 
         <h2>The quiet warning sign: velocity</h2>
         <p>
-          Average four-seam velocity by start. He opened the year at 97.9 and his last four starts have all been
-          96.9 or below, more than a full tick under his 2025 average of {ff25.velo}. Nothing here screams
+          Average four-seam velocity by start. He opened the year at 97.9, has sat under 97 in most starts since
+          mid-May, and the 95.7 against Miami on August 11 was his lowest of the season, two and a half ticks
+          under his 2025 average of {ff25.velo}. Nothing here screams
           injury, but the trend is the one thing on this page that isn&apos;t explained by luck.
         </p>
         <div className="card skChartCard">
@@ -185,7 +187,7 @@ export default function SkenesPage() {
           Three things, in order of importance. <strong>First, home runs:</strong> he has allowed {s2026.hr} in{' '}
           {s2026.ip} innings after allowing {s2025.hr} in {s2025.ip}{' '}all of last year, and they&apos;re
           concentrated on fastballs over the middle. <strong>Second, two disaster starts:</strong> Opening Day
-          and July 1 account for 12 of his 39 earned runs; without them his ERA is near 2.9. <strong>Third, the
+          and July 1 alone account for 12 of his 58 earned runs; take those two out and his ERA is 3.18. <strong>Third, the
           stuff is a half-grade duller:</strong>{' '}velocity down about 1 mph and whiff rates down across the
           arsenal. Not enough to make him bad, but enough to shrink the margin for error that made 2025 look
           easy. The strikeouts are still elite, the walks are still stingy, and FIP thinks he&apos;s been a
