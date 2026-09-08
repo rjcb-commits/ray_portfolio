@@ -5,7 +5,7 @@ import { marked } from 'marked'
 
 const PAGE_TITLE = 'CFPB Consumer Complaints Dashboard'
 const PAGE_DESC =
-  'P2P / money-transfer disputes resolve with monetary relief at 4.96%, vs 14-23% for card products. Five years of CFPB complaint data with Block / Cash App as the standout outlier.'
+  'P2P / money-transfer disputes close with monetary relief at 4.96% pooled over five years, vs 14-23% for card products, and sit below every card product in every year. Block / Cash App is the standout outlier.'
 const PAGE_URL = 'https://rayzjack.com/apps/cfpb-complaints'
 const PAGE_IMAGE = '/dash_icon.png'
 
