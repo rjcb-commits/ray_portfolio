@@ -89,9 +89,11 @@ export default function SkenesPage() {
         <p>
           Cumulative ERA and FIP by start. Opening Day (5 ER in ⅔ of an inning against the Mets) left the ERA at
           67.50 after one start, so the chart begins at start two. From mid-April to mid-June he ran an ERA
-          between 2.36 and 3.00. Since then the rough nights have piled up: seven runs in Philadelphia on July 1,
-          then five apiece against the Cubs and Reds in late July. Red dots mark home runs allowed: they cluster
-          in exactly the starts where the ERA line jumps.
+          between 2.36 and 3.00. Since then the rough nights have kept coming: seven runs in Philadelphia on
+          July 1, five apiece against the Cubs and Reds in late July, five more against the Giants on
+          September 1. He has steadied a bit lately, with two scoreless outings in his last five, but the ERA
+          line has flattened out well above the FIP line instead of falling back toward it. Red dots mark home
+          runs allowed: they cluster in exactly the starts where the ERA line jumps.
         </p>
         <div className="card skChartCard">
           <EraFipChart starts={data.starts} />
@@ -124,9 +126,10 @@ export default function SkenesPage() {
 
         <h2>The arsenal, 2025 vs 2026</h2>
         <p>
-          Whiff rate is down on nearly every pitch. The changeup and slider still miss bats; the sinker&apos;s
-          whiff rate has collapsed from 15% to 7% and the splitter is getting hit at a .333 clip. The curveball,
-          a real weapon in 2024, is basically shelved at under 1% usage.
+          Whiff rate is down on nearly every pitch. The changeup and slider still miss bats, though hitters are
+          doing far more damage on the changeup when they do connect. The sinker&apos;s whiff rate has fallen
+          from 15% to 11% and the splitter is getting hit at a .339 clip. The curveball, a real weapon in 2024,
+          is basically shelved at under 1% usage.
         </p>
         <table className="skTable">
           <thead>
@@ -175,8 +178,9 @@ export default function SkenesPage() {
         <p>
           Average four-seam velocity by start. He opened the year at 97.9, has sat under 97 in most starts since
           mid-May, and the 95.7 against Miami on August 11 was his lowest of the season, two and a half ticks
-          under his 2025 average of {ff25.velo}. Nothing here screams
-          injury, but the trend is the one thing on this page that isn&apos;t explained by luck.
+          under his 2025 average of {ff25.velo}. It has held between 96.6 and 97.2 in the four starts since, so
+          this looks like a step down that stuck rather than a slide that is still going. Nothing here screams
+          injury, but it is the one thing on this page that isn&apos;t explained by luck.
         </p>
         <div className="card skChartCard">
           <VeloChart starts={data.starts} avg2025={ff25.velo as number} />
@@ -186,13 +190,16 @@ export default function SkenesPage() {
         <p>
           Three things, in order of importance. <strong>First, home runs:</strong> he has allowed {s2026.hr} in{' '}
           {s2026.ip} innings after allowing {s2025.hr} in {s2025.ip}{' '}all of last year, and they&apos;re
-          concentrated on fastballs over the middle. <strong>Second, two disaster starts:</strong> Opening Day
-          and July 1 alone account for 12 of his 58 earned runs; take those two out and his ERA is 3.18. <strong>Third, the
-          stuff is a half-grade duller:</strong>{' '}velocity down about 1 mph and whiff rates down across the
-          arsenal. Not enough to make him bad, but enough to shrink the margin for error that made 2025 look
-          easy. The strikeouts are still elite, the walks are still stingy, and FIP thinks he&apos;s been a
-          top-of-rotation arm all along. This looks less like a decline and more like a great pitcher having a
-          normal season, with some bad timing mixed in.
+          concentrated on fastballs over the middle. <strong>Second, the blowups:</strong> Opening Day and
+          July 1 alone account for 12 of his 66 earned runs, and taking those two out drops his ERA to 3.23.
+          That was a cleaner story in June than it is now, though. Eight of his 29 starts have cost him four or
+          more earned runs, so this is no longer a case of two bad nights dragging down an otherwise clean
+          season. <strong>Third, the stuff is a half-grade duller:</strong>{' '}the fastball is down 1.3 mph and
+          whiff rates are down across the arsenal. Not enough to make him bad, but enough to shrink the margin
+          for error that made 2025 look easy. The strikeouts are still elite at 10.5 per nine, the walks have
+          crept up from 2.0 to 2.6 per nine, and FIP still has him as a top-of-rotation arm. This reads less
+          like a decline than
+          like a great pitcher having a merely good season, with the home runs doing most of the damage.
         </p>
       </article>
 
