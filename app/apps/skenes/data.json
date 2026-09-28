@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-09",
-  "through": "2026-09-06",
+  "updated": "2026-09-28",
+  "through": "2026-09-24",
   "seasons": [
     {
       "year": "2024",
@@ -30,16 +30,16 @@
     },
     {
       "year": "2026",
-      "era": "3.83",
-      "ip": "155.0",
-      "k": 181,
-      "bb": 45,
-      "hr": 15,
-      "whip": "1.15",
-      "avg": ".231",
+      "era": "3.82",
+      "ip": "174.1",
+      "k": 200,
+      "bb": 49,
+      "hr": 20,
+      "whip": "1.12",
+      "avg": ".227",
       "wins": 10,
       "losses": 11,
-      "kPer9": "10.51"
+      "kPer9": "10.33"
     }
   ],
   "starts": [
@@ -448,6 +448,48 @@
       "cumEra": 3.83,
       "cumFip": 3.16,
       "ffVelo": 96.6
+    },
+    {
+      "n": 30,
+      "date": "2026-09-12",
+      "opponent": "Chicago Cubs",
+      "home": false,
+      "ip": "7.0",
+      "er": 2,
+      "k": 4,
+      "bb": 1,
+      "hr": 2,
+      "cumEra": 3.78,
+      "cumFip": 3.31,
+      "ffVelo": 96.5
+    },
+    {
+      "n": 31,
+      "date": "2026-09-18",
+      "opponent": "Kansas City Royals",
+      "home": true,
+      "ip": "6.0",
+      "er": 5,
+      "k": 7,
+      "bb": 1,
+      "hr": 2,
+      "cumEra": 3.91,
+      "cumFip": 3.39,
+      "ffVelo": 96.1
+    },
+    {
+      "n": 32,
+      "date": "2026-09-24",
+      "opponent": "St. Louis Cardinals",
+      "home": true,
+      "ip": "6.1",
+      "er": 1,
+      "k": 8,
+      "bb": 2,
+      "hr": 1,
+      "cumEra": 3.82,
+      "cumFip": 3.4,
+      "ffVelo": 96.6
     }
   ],
   "arsenal": {
@@ -541,80 +583,80 @@
       {
         "type": "FF",
         "name": "4-Seam Fastball",
-        "count": 1071,
+        "count": 1180,
         "usage": 0.408,
-        "velo": 96.9,
+        "velo": 96.8,
         "whiffRate": 0.271,
-        "baa": 0.213,
-        "abs": 235,
-        "hr": 8,
-        "xwobaContact": 0.37
+        "baa": 0.22,
+        "abs": 264,
+        "hr": 13,
+        "xwobaContact": 0.387
       },
       {
         "type": "ST",
         "name": "Sweeper",
-        "count": 412,
-        "usage": 0.157,
+        "count": 460,
+        "usage": 0.159,
         "velo": 84.3,
-        "whiffRate": 0.255,
-        "baa": 0.169,
-        "abs": 65,
+        "whiffRate": 0.27,
+        "baa": 0.162,
+        "abs": 74,
         "hr": 3,
-        "xwobaContact": 0.292
+        "xwobaContact": 0.276
       },
       {
         "type": "CH",
         "name": "Changeup",
-        "count": 335,
-        "usage": 0.128,
+        "count": 360,
+        "usage": 0.125,
         "velo": 88.7,
-        "whiffRate": 0.337,
-        "baa": 0.25,
-        "abs": 80,
+        "whiffRate": 0.346,
+        "baa": 0.233,
+        "abs": 86,
         "hr": 1,
-        "xwobaContact": 0.356
+        "xwobaContact": 0.339
       },
       {
         "type": "SI",
         "name": "Sinker",
-        "count": 312,
-        "usage": 0.119,
-        "velo": 96.7,
-        "whiffRate": 0.109,
-        "baa": 0.289,
-        "abs": 76,
+        "count": 340,
+        "usage": 0.118,
+        "velo": 96.6,
+        "whiffRate": 0.123,
+        "baa": 0.291,
+        "abs": 86,
         "hr": 2,
-        "xwobaContact": 0.336
+        "xwobaContact": 0.338
       },
       {
         "type": "FS",
         "name": "Splitter",
-        "count": 283,
-        "usage": 0.108,
+        "count": 291,
+        "usage": 0.101,
         "velo": 93.2,
-        "whiffRate": 0.174,
-        "baa": 0.339,
-        "abs": 62,
+        "whiffRate": 0.171,
+        "baa": 0.323,
+        "abs": 65,
         "hr": 0,
-        "xwobaContact": 0.342
+        "xwobaContact": 0.34
       },
       {
         "type": "SL",
         "name": "Slider",
-        "count": 200,
-        "usage": 0.076,
+        "count": 249,
+        "usage": 0.086,
         "velo": 86.7,
-        "whiffRate": 0.324,
-        "baa": 0.158,
-        "abs": 57,
+        "whiffRate": 0.321,
+        "baa": 0.149,
+        "abs": 67,
         "hr": 1,
-        "xwobaContact": 0.344
+        "xwobaContact": 0.332
       },
       {
         "type": "CU",
         "name": "Curveball",
         "count": 10,
-        "usage": 0.004,
+        "usage": 0.003,
         "velo": 81.8,
         "whiffRate": 0.2,
         "baa": null,
@@ -804,6 +846,66 @@
       "plateX": -0.054,
       "plateZ": 2.38,
       "count": "1-0"
+    },
+    {
+      "date": "2026-09-12",
+      "batter": "Pedro Ramírez",
+      "pitch": "4-Seam Fastball",
+      "pitchType": "FF",
+      "velo": 94.8,
+      "exitVelo": 98.2,
+      "distance": 393,
+      "plateX": 0.147,
+      "plateZ": 2.712,
+      "count": "1-0"
+    },
+    {
+      "date": "2026-09-12",
+      "batter": "Michael Busch",
+      "pitch": "4-Seam Fastball",
+      "pitchType": "FF",
+      "velo": 95.6,
+      "exitVelo": 101.6,
+      "distance": 415,
+      "plateX": -0.756,
+      "plateZ": 2.507,
+      "count": "1-0"
+    },
+    {
+      "date": "2026-09-18",
+      "batter": "Michael Massey",
+      "pitch": "4-Seam Fastball",
+      "pitchType": "FF",
+      "velo": 94.8,
+      "exitVelo": 99.1,
+      "distance": 371,
+      "plateX": 0.509,
+      "plateZ": 2.878,
+      "count": "2-0"
+    },
+    {
+      "date": "2026-09-18",
+      "batter": "Vinnie Pasquantino",
+      "pitch": "4-Seam Fastball",
+      "pitchType": "FF",
+      "velo": 96.7,
+      "exitVelo": 106.7,
+      "distance": 395,
+      "plateX": -0.35,
+      "plateZ": 2.555,
+      "count": "0-0"
+    },
+    {
+      "date": "2026-09-24",
+      "batter": "Alec Burleson",
+      "pitch": "4-Seam Fastball",
+      "pitchType": "FF",
+      "velo": 95.9,
+      "exitVelo": 104.6,
+      "distance": 395,
+      "plateX": -0.284,
+      "plateZ": 3.085,
+      "count": "0-0"
     }
   ]
 }

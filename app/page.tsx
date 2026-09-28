@@ -2,7 +2,7 @@ const dataScienceProjects = [
   {
     title: 'What Happened to Paul Skenes?',
     description:
-      'Pitch-level Statcast breakdown of Skenes’ 2026 season: the ERA doubled, but FIP, whiff rates, and 11 home runs tell a more interesting story than "decline."',
+      'Pitch-level Statcast breakdown of Skenes’ 2026 season. The ERA doubled, I spent the summer blaming luck, and the full-season data says it was a fastball that lost 1.4 mph.',
     tags: ['Statcast', 'MLB Stats API', 'Next.js', 'SVG charts', 'FIP'],
     image: '/skenes-icon.svg',
     href: '/apps/skenes',
