@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://rayzjack.com'),
   title: 'Raymond Jack — Data Scientist',
   description:
-    'Data scientist with 19 years in retail banking. Production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations. Side projects in Android.',
+    'Data scientist. In banking since 2008. Production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations. Side projects in Android.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Raymond Jack — Data Scientist',
     description:
-      'Data scientist with 19 years in retail banking. Production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations.',
+      'Data scientist. In banking since 2008. Production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations.',
     type: 'website',
     url: 'https://rayzjack.com',
     siteName: 'Raymond Jack',
