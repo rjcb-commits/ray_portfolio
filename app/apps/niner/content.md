@@ -1,16 +1,8 @@
-# Niner: the daily sudoku
-
-> A clean, calm sudoku game for Android. One daily puzzle, five modes, zero ads, zero tracking.
-
 <p align="center">
-  <img src="/niner-icon.png" width="160" alt="Niner app icon">
-</p>
-
-<p align="center">
-  <img src="/apps/niner/01_main_menu.png" width="22%" alt="Main menu">
-  <img src="/apps/niner/03_game.png" width="22%" alt="Game in progress">
-  <img src="/apps/niner/04_stats.png" width="22%" alt="Statistics">
-  <img src="/apps/niner/05_achievements.png" width="22%" alt="Achievements">
+  <img src="/apps/niner/main-menu.webp" width="22%" alt="Main menu" loading="lazy" decoding="async">
+  <img src="/apps/niner/game.webp" width="22%" alt="Game in progress" loading="lazy" decoding="async">
+  <img src="/apps/niner/stats.webp" width="22%" alt="Statistics" loading="lazy" decoding="async">
+  <img src="/apps/niner/achievements.webp" width="22%" alt="Achievements" loading="lazy" decoding="async">
 </p>
 
 ---
@@ -56,6 +48,8 @@ Your puzzles, stats, and achievements live in a single SharedPreferences file on
 - **Sequenced sound chimes** via Android's `ToneGenerator` (no bundled audio assets)
 - **Loss-reason-aware celebrations.** Gave-up, mistake-limit, and Speed-timeout each get their own title, subtitle, and emoji.
 - **Cage-aware hints in Killer.** When the cage constraint alone narrows a cell to one digit, the hint dialog explains in cage terms instead of pretending it's a regular naked single.
+- **Optional auto rule-out.** Dims pad digits that can't go in the selected cell. Off by default, for pure deduction.
+- **Tablet and landscape layout.** Board on the left, controls on the right.
 
 ### Accessibility
 
@@ -121,75 +115,13 @@ app/src/main/java/com/ninersudoku/
 - **`org.json` over `kotlinx.serialization`.** The persistence surface is small (saved game, stats, achievements). `org.json` ships with Android and saves an entire serialisation plugin from being added to the build.
 - **Wrong entries shake but don't stick.** A wrong digit increments the mistake counter and triggers a board shake, but the cell stays empty. Removes the awkward "I see a 7 here but I know it's wrong, do I leave it?" loop.
 - **Killer cages are strictly 2 or 3 cells.** Single-cell cages would double as pre-filled givens and dilute the Killer identity. Larger cages slow the solve loop without adding interesting reasoning. Strict 2- or 3-cell cages keep deductions tractable. A topology-trapped orphan triggers a regen rather than a 4-cell exception.
-- **Killer uses fewer starting clues than Classic** at the same difficulty (32 vs 50 at Beginner, 9 vs 24 at Expert). Cage sums carry part of the deduction load.
+- **Killer uses fewer starting clues than Classic** at the same difficulty (32 vs 50 at Beginner, 17 vs 24 at Expert). Cage sums carry part of the deduction load.
 - **The Killer hint engine is cage-aware.** When the cage constraint alone narrows a cell to one digit, the hint dialog explains in cage terms ("This cage needs 14. With 9 already in, the last cell must be 5") instead of pretending it's a standard naked single.
 - **"New puzzle" generates fresh, never restarts the same puzzle.** A "restart this puzzle" button would let players pre-scout, then run again to fake a best time or unlock Perfectionist/Flawless cheaply. The overflow menu always ships a different puzzle.
 - **Process-death restore via `SharedPreferences`.** Every cell entry persists the full game state to a single key (`saved_game`). `am force-stop` + relaunch lands the player on the menu with a Continue card pointing at the exact board they left.
 - **Adaptive launcher icon** with dedicated `mipmap-anydpi-v26` background colour matching the splash screen, so no flicker on cold launch.
 
----
-
-## Build
-
-### Prerequisites
-
-- Android Studio Ladybug or newer
-- JDK 21 (Gradle requires it on AGP 8.7+)
-- Android SDK with platform 35 + build-tools 35.0.0
-
-### Debug build
-
-```bash
-export JAVA_HOME=$(brew --prefix openjdk@21)/libexec/openjdk.jdk/Contents/Home
-export PATH=$JAVA_HOME/bin:$PATH
-
-./gradlew assembleDebug
-adb install -r app/build/outputs/apk/debug/app-debug.apk
-```
-
-### Release build
-
-You'll need your own keystore. Run once:
-
-```bash
-keytool -genkeypair -v \
-  -keystore app/release.jks \
-  -alias niner \
-  -keyalg RSA -keysize 2048 \
-  -validity 10000
-```
-
-Then add to `local.properties` (gitignored):
-
-```properties
-RELEASE_STORE_FILE=release.jks
-RELEASE_STORE_PASSWORD=...
-RELEASE_KEY_ALIAS=niner
-RELEASE_KEY_PASSWORD=...
-```
-
-Build:
-
-```bash
-./gradlew bundleRelease       # AAB for Play Store
-./gradlew assembleRelease     # APK for sideloading
-```
-
-Without a keystore, the release build fails loudly with `SigningConfig "release" is missing required property "storeFile"`. That's intentional. It stops you from accidentally shipping unsigned artefacts.
-
----
-
-## Privacy
-
-The full privacy policy is hosted at **https://niner-privacy.pages.dev/privacy**.
-
-The HTML source lives in [`docs/privacy.html`](docs/privacy.html). It's deployed to Cloudflare Pages with:
-
-```bash
-wrangler pages deploy docs --project-name=niner-privacy --branch=main
-```
-
-Short version: zero data collection, zero permissions, zero network calls. Everything stays on the device. Uninstalling the app removes all of it.
+Build and release-signing steps are in the [repo README](https://github.com/rjcb-commits/niner_sudoku#build).
 
 ---
 
@@ -199,17 +131,16 @@ Things deferred for v1.x:
 
 - Smarter hint techniques (naked pair, X-Wing) for Hard / Expert
 - Per-mode-per-difficulty win counts (the "Cage Master" achievement currently uses "won Killer at all 5 difficulties" as a proxy for "won 10 Killer puzzles")
-- Tablet-optimised layout. The phone layout works on tablets but doesn't take advantage of the extra width
 - Localisation. Strings are inline; needs extraction to `strings.xml` first
 
 ---
 
 ## License
 
-[MIT](LICENSE). Fork it, learn from it, remix it.
+[MIT](https://github.com/rjcb-commits/niner_sudoku/blob/main/LICENSE). Fork it, learn from it, remix it.
 
 ---
 
 ## Credits
 
-Built solo by **Rayjack CB**. Made for people who love sudoku.
+Built solo by **Raymond Jack**. Made for people who love sudoku.

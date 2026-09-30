@@ -8,7 +8,8 @@ const PAGE_TITLE = 'Niner'
 const PAGE_DESC =
   'A clean, calm sudoku for Android. One daily puzzle, five modes, zero ads, zero tracking.'
 const PAGE_URL = 'https://rayzjack.com/apps/niner'
-const PAGE_IMAGE = '/niner-icon.png'
+const PAGE_IMAGE = { url: '/apps/niner/og.png', width: 1024, height: 500, alt: 'Niner: the daily sudoku' }
+const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.ninersudoku'
 
 export const metadata: Metadata = {
   title: `${PAGE_TITLE} | Raymond Jack`,
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     type: 'article',
     url: PAGE_URL,
     siteName: 'Raymond Jack',
-    images: [{ url: PAGE_IMAGE, alt: `${PAGE_TITLE} icon` }],
+    images: [PAGE_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
@@ -42,7 +43,20 @@ export default async function NinerPage() {
           View on GitHub
         </a>
       </div>
-      <NinerDemo />
+      <header className="wrap appIntro">
+        <img className="appIntroIcon" src="/apps/niner/icon.webp" width={72} height={72} alt="" />
+        <div>
+          <h1>Niner: the daily sudoku</h1>
+          <p className="appIntroTagline">{PAGE_DESC}</p>
+          <div className="appIntroCta">
+            <a className="btn primary" href={PLAY_URL} target="_blank" rel="noreferrer">
+              Get it on Google Play
+            </a>
+            <span className="appIntroNote">Published on Google Play as nyznah</span>
+          </div>
+        </div>
+      </header>
+      <NinerDemo playUrl={PLAY_URL} />
       <article className="wrap prose" dangerouslySetInnerHTML={{ __html: html }} />
       <footer className="footer wrap">
         <div>© {new Date().getFullYear()} Raymond Jack</div>
