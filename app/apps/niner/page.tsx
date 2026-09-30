@@ -2,6 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import type { Metadata } from 'next'
 import { marked } from 'marked'
+import NinerDemo from './NinerDemo'
 
 const PAGE_TITLE = 'Niner'
 const PAGE_DESC =
@@ -41,6 +42,7 @@ export default async function NinerPage() {
           View on GitHub
         </a>
       </div>
+      <NinerDemo />
       <article className="wrap prose" dangerouslySetInnerHTML={{ __html: html }} />
       <footer className="footer wrap">
         <div>© {new Date().getFullYear()} Raymond Jack</div>
