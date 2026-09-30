@@ -238,19 +238,6 @@ The worker:
 
 ---
 
-## Privacy
-
-The full privacy policy is hosted at **https://stupidsmall-privacy.pages.dev/privacy.html**.
-
-Short version:
-- Tasks and micro-steps live in a Room database on your device. They never leave it.
-- AI prompts are sent to a Cloudflare Worker that proxies to Groq. Used to generate the response, not stored.
-- No analytics, crash reporting, or ad SDKs.
-- Google Play Billing only loads if you tap the Premium upgrade.
-- Uninstalling the app removes all your data.
-
----
-
 ## Roadmap
 
 Ideas under consideration for v1.x:
