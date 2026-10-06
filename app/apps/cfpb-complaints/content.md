@@ -2,7 +2,7 @@
 
 > Five years of CFPB data on payment-product complaints. P2P / money-transfer disputes close with monetary relief at a fraction of the rate card disputes do, and they sit below every card product in every year of the window.
 
-**[View the live dashboard →](https://public.tableau.com/app/profile/raymond.jack6785/viz/CFPBP2PResolutionGap/CFPBP2PComplaints)**
+**[View the live dashboard →](https://public.tableau.com/app/profile/ray.jack/viz/CFPBP2PResolutionGap/CFPBP2PComplaints)**
 
 ---
 

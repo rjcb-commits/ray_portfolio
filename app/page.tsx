@@ -1,5 +1,13 @@
 const dataScienceProjects = [
   {
+    title: 'Fraud Alert Triage',
+    description:
+      'Ranking 30,622 bank account-opening fraud alerts, comparing 50 reviewers, and a local AI assistant that drafts investigator notes behind code-enforced guardrails: 98% valid, zero invented facts. Live on Tableau Public.',
+    tags: ['Python', 'XGBoost', 'SHAP', 'Ollama', 'LLM guardrails', 'Tableau'],
+    image: '/fraud-triage-icon.png',
+    href: '/apps/fraud-alert-triage',
+  },
+  {
     title: 'What Happened to Paul Skenes?',
     description:
       'Pitch-level Statcast breakdown of Skenes’ 2026 season. The ERA doubled, I spent the summer blaming luck, and the full-season data says it was a fastball that lost 1.4 mph.',
