@@ -2,6 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import type { Metadata } from 'next'
 import { marked } from 'marked'
+import ScaledTableauEmbed from './ScaledTableauEmbed'
 
 const PAGE_TITLE = 'Fraud Alert Triage: Ranking, Reviewers & Guardrailed AI'
 const PAGE_DESC =
@@ -52,30 +53,12 @@ export default async function FraudAlertTriagePage() {
 
       {TABLEAU_EMBED_URL ? (
         <div className="wrap" style={{ marginBottom: 24 }}>
-          <div
-            style={{
-              position: 'relative',
-              paddingBottom: '56.25%',
-              height: 0,
-              overflow: 'hidden',
-              borderRadius: 12,
-              border: '1px solid var(--border)',
-            }}
-          >
-            <iframe
-              src={TABLEAU_EMBED_URL}
-              title="Fraud Alert Triage dashboard"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                border: 0,
-              }}
-              allow="fullscreen"
-            />
-          </div>
+          <ScaledTableauEmbed
+            src={TABLEAU_EMBED_URL}
+            title="Fraud Alert Triage dashboard"
+            width={1366}
+            height={795}
+          />
         </div>
       ) : null}
 
