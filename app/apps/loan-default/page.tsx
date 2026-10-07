@@ -44,7 +44,7 @@ export default async function LoanDefaultPage() {
             rel="noreferrer"
             className="repoLink"
           >
-            Live demo (may take ~30 seconds to wake)
+            Live demo
           </a>
           <a
             href="https://github.com/rjcb-commits/loan_default_predictor"
