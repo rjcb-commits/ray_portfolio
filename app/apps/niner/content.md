@@ -95,7 +95,7 @@ app/src/main/java/com/ninersudoku/
 ├── prefs/             DisplayPreferences (a11y + behaviour toggles)
 ├── sound/             SoundManager (ToneGenerator-based chimes)
 ├── stats/             StatsManager + per-mode best-time tracking
-├── viewmodel/         GameViewModel — single source of state truth
+├── viewmodel/         GameViewModel: single source of state truth
 └── ui/
     ├── BoardView.kt        Canvas-rendered grid + transparent semantics overlay for TalkBack
     ├── NumberPad.kt        Digit pad with remaining counts + tap/long-press

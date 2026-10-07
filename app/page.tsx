@@ -26,7 +26,7 @@ const dataScienceProjects = [
   {
     title: 'Loan Default Predictor',
     description:
-      'LightGBM model that estimates default probability on Lending Club personal loans, with a live Streamlit app you can poke at. AUC 0.71.',
+      'LightGBM model that estimates default probability on Lending Club personal loans, with a live Streamlit app you can poke at (may take ~30 seconds to wake). AUC 0.71.',
     tags: ['Python', 'LightGBM', 'scikit-learn', 'pandas', 'Streamlit'],
     image: '/loan-default-icon.png',
     href: '/apps/loan-default',
@@ -64,7 +64,7 @@ const experience = [
   {
     title: 'Data Scientist, AVP',
     org: 'PNC Financial Services',
-    meta: '2025 — Present',
+    meta: '2025 to Present',
     bullets: [
       'Built an XGBoost workflow that identifies operational errors 10x more often than random sampling, taken through validation, production deployment, and Tableau monitoring.',
       'Built the case-sampling tool QA reviewers use day to day; model scores drive risk-targeted review with a random control sample for ongoing validation.',
@@ -74,9 +74,9 @@ const experience = [
   {
     title: 'Sr. Business Analytics Consultant, AVP',
     org: 'PNC Financial Services',
-    meta: '2022 — 2025',
+    meta: '2022 to 2025',
     bullets: [
-      'Owned analytics for relationship-operations strategy, supporting decisions for line-of-business leaders.',
+      'Owned analytics for consumer lending and servicing operations, supporting decisions for line-of-business leaders.',
       'Built SQL, PySpark, and Hive pipelines on Cloudera, orchestrated with Oozie, that fed downstream reporting and modeling work.',
       'Top 3, two years running, in PNC\'s enterprise data science competition: multi-class LightGBM (2024), Cox proportional hazards survival model (2025).',
     ],
@@ -84,7 +84,7 @@ const experience = [
   {
     title: 'Business Analytics Consultant and earlier roles',
     org: 'PNC Financial Services',
-    meta: '2017 — 2022 and prior',
+    meta: '2017 to 2022 and prior',
     bullets: [
       'Built the first analytics function on multiple teams that previously had none.',
       'Replaced legacy Excel/VBA reporting with Python and SQL pipelines.',
@@ -94,8 +94,8 @@ const experience = [
 ]
 
 const stacks = {
-  platforms: ['Python', 'SQL', 'PySpark', 'Hadoop', 'Spark', 'Hive', 'Cloudera', 'Teradata', 'Oracle', 'Oozie', 'Jupyter', 'GitHub', 'Cloudflare Workers'],
-  modeling: ['XGBoost', 'LightGBM', 'Scikit-learn', 'Pandas', 'NumPy', 'Cox Proportional Hazards', 'Survival Analysis', 'Classification', 'Feature Engineering', 'Statistical Sampling', 'A/B Testing', 'NLP (TF-IDF)', 'LLMs'],
+  platforms: ['Python', 'SQL', 'PySpark', 'Hadoop', 'Spark', 'Hive', 'Cloudera', 'Teradata', 'Oracle', 'SQL Server', 'SharePoint', 'DuckDB', 'Ollama', 'Oozie', 'Jupyter', 'GitHub', 'Cloudflare Workers'],
+  modeling: ['XGBoost', 'LightGBM', 'Scikit-learn', 'Pandas', 'NumPy', 'Cox Proportional Hazards', 'Survival Analysis', 'Classification', 'Feature Engineering', 'Statistical Sampling', 'LLMs'],
   visualization: ['Tableau', 'matplotlib', 'seaborn', 'Excel', 'Executive Dashboards'],
 }
 
@@ -271,7 +271,7 @@ export default function HomePage() {
           <div className="sectionLabel">Contact</div>
           <h2>Let&apos;s connect.</h2>
           <p>
-            Always up for a conversation about data science, analytics engineering, business intelligence, or product work. Reach out anytime.
+            Always up for a conversation about data science, fraud, disputes, credit and risk analytics, or business intelligence. Reach out anytime.
           </p>
           <div className="ctaRow">
             <a className="btn primary" href="mailto:rayjackcb@gmail.com">

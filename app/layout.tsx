@@ -18,14 +18,14 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rayzjack.com'),
-  title: 'Raymond Jack — Data Scientist',
+  title: 'Raymond Jack | Data Scientist',
   description:
     'Data scientist. In banking since 2007. Production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations. Side projects in Android.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Raymond Jack — Data Scientist',
+    title: 'Raymond Jack | Data Scientist',
     description:
       'Data scientist. In banking since 2007. Production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations.',
     type: 'website',
@@ -36,13 +36,13 @@ export const metadata: Metadata = {
         url: '/og.png',
         width: 1731,
         height: 909,
-        alt: 'Raymond Jack — Data Scientist · Applied ML & Analytics',
+        alt: 'Raymond Jack | Data Scientist · Applied ML & Analytics',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Raymond Jack — Data Scientist',
+    title: 'Raymond Jack | Data Scientist',
     description:
       'Data scientist building production ML, SQL/Python pipelines, and Tableau dashboards for retail banking operations.',
     images: ['/og.png'],

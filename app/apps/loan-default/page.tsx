@@ -44,7 +44,7 @@ export default async function LoanDefaultPage() {
             rel="noreferrer"
             className="repoLink"
           >
-            Live demo
+            Live demo (may take ~30 seconds to wake)
           </a>
           <a
             href="https://github.com/rjcb-commits/loan_default_predictor"
@@ -64,7 +64,7 @@ export default async function LoanDefaultPage() {
       >
         <img
           src="/apps/loan-default/hero.png"
-          alt="Loan Default Predictor live demo screenshot — risk gauge, loan economics, feature contributions"
+          alt="Loan Default Predictor live demo screenshot: risk gauge, loan economics, feature contributions"
         />
       </a>
       <article className="wrap prose" dangerouslySetInnerHTML={{ __html: html }} />

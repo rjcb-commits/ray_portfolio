@@ -29,7 +29,7 @@ Stupid Small flips that. Instead of writing down "Write thesis," you ask the AI 
 
 That first step is always doable.
 
-- **Stupidly small steps.** The AI is system-prompted to never propose a step longer than 5 minutes.
+- **Stupidly small steps.** The AI is system-prompted to aim for 2-5 minute steps and never go over 10 minutes.
 - **One step at a time.** The focus screen shows only the current step. No list, no scrolling, no checkboxes.
 - **Wall-clock focus timer.** Picks a duration based on the AI's estimate. Runs Do Not Disturb while active. Immune to coroutine drift.
 - **Built-in escape hatch.** If a step still feels too big mid-timer, tap "Break it down" and the AI hands you something even smaller.
@@ -62,7 +62,7 @@ That first step is always doable.
 
 - **5 hand-tuned colour themes** × light / dark variants (Sunset, Ocean, Forest, Lavender, Rose), each with consistent Material 3 ColorScheme.
 - **Home-screen widget** (Glance + Material 3) showing the next pending step with one-tap launch into focus.
-- **Animated boulder + smiling cubes empty state** on the task list (commissioned art, not a stock illustration).
+- **Animated boulder + smiling cubes empty state** on the task list.
 - **Confetti celebration engine.** Particle system with continuous spawn loop, gravity tuned for natural fall, capped at 350-450 live particles to keep frame times tight.
 - **Premium tier** via Google Play Billing v7. Unlocks a higher AI request quota and is fully optional. The base loop works without it.
 
@@ -103,7 +103,7 @@ app/src/main/java/com/stupidsmall/app/
 │   └── BillingManager.kt      Play Billing v7 wrapper (subscription product, ack, restore)
 ├── data/
 │   ├── ai/
-│   │   └── GeminiApiClient.kt OkHttp client → Cloudflare Worker → Groq
+│   │   └── GeminiApiClient.kt AI client: OkHttp → Cloudflare Worker → Groq (Llama 3.3 70B)
 │   ├── db/
 │   │   ├── AppDatabase.kt     Room DB with TypeConverters
 │   │   ├── TaskDao.kt
@@ -146,95 +146,11 @@ app/src/main/java/com/stupidsmall/app/
 - **Wall-clock timer over coroutine `delay`.** A 15-minute focus session run with `delay(1000)` drifts noticeably under doze, recomposition pressure, or app-backgrounding. The current implementation polls `System.currentTimeMillis() - startMillis` so the displayed remaining time reflects reality, not loop iterations.
 - **DnD only while running.** The timer flips Do Not Disturb on at start and off at pause, done, or VM `onCleared()`. Crash mid-session and DnD still gets cleared on next launch. The cleanup runs in `onCreate` of `MainActivity` defensively.
 - **Two-step add-task flow.** Title → AI suggestions on a second screen. Lets users see and tweak steps before committing instead of locking them in. "Use these steps" hands them straight to focus on step 1; "Save without focus" lands them back on the task list.
-- **Step 1 is always doable.** The AI system prompt enforces a 5-minute hard cap and strongly prefers 2-3 minute steps. If the model proposes a longer step, the prompt tells it to split. Users can also tap **Break it down** mid-timer to ask for an even smaller version.
+- **Step 1 is always doable.** The AI system prompt aims for 2-5 minute steps, defaults to 5 when unsure, and sets a hard ceiling of 10 minutes. Anything longer gets split. Users can also tap **Break it down** mid-timer to ask for an even smaller version.
 - **Soft delete + auto-purge.** Swipe-to-delete sets `isDeleted = true` and shows a snackbar. The active query filters those out. On VM init we purge any rows still flagged from a prior session. Handles "swiped, then force-quit" without leaking data.
 - **Confetti uses an `ArrayList` + `key(tick)`.** Started with `mutableStateListOf` for ergonomics. Performance tanked at >100 particles. Switched to a plain `ArrayList` for O(1) swap-remove, but Compose stopped recomposing the canvas. Wrapping the `Canvas` in `key(tick) { … }` forces a redraw each animation frame without the SnapshotStateList overhead.
 - **Glance widget reads from Room directly** via a Hilt-injected repository, not a duplicate persistence layer. Updates fire when `WorkManager` ticks the reminder or when the user saves a task.
 - **Single-activity navigation** with route-level transition overrides. Celebrations fade in (more triumphant) while the rest of the app slides horizontally (clear forward and back grammar).
-
----
-
-## Build
-
-### Prerequisites
-
-- Android Studio Ladybug or newer
-- JDK 17 (`brew install openjdk@17`)
-- Android SDK with platform 35 + build-tools 35.0.0
-
-### Configure secrets
-
-The app reads several values from `local.properties` (gitignored). Copy `local.properties.example` if present, otherwise create `local.properties` at the project root with:
-
-```properties
-sdk.dir=/path/to/Android/sdk
-
-# AI proxy — point at your own Cloudflare Worker (or any compatible endpoint)
-PROXY_URL=https://your-proxy.workers.dev
-PROXY_APP_SECRET=...
-LLM_MODEL=openai/gpt-oss-120b:free
-
-# Optional: legacy direct keys (kept for fallback testing)
-GEMINI_API_KEY=
-OPENROUTER_API_KEY=
-```
-
-Without `PROXY_URL`, AI breakdowns fail loudly with a quota or network error. That's by design. You're not meant to ship a build with no AI backend.
-
-### Debug build
-
-```bash
-export JAVA_HOME=/opt/homebrew/opt/openjdk@17
-./gradlew assembleDebug
-adb install -r app/build/outputs/apk/debug/app-debug.apk
-```
-
-### Release build
-
-You'll need your own keystore. Generate once:
-
-```bash
-keytool -genkeypair -v \
-  -keystore app/release.jks \
-  -alias stupidsmall \
-  -keyalg RSA -keysize 2048 \
-  -validity 10000
-```
-
-Add to `local.properties`:
-
-```properties
-RELEASE_STORE_FILE=release.jks
-RELEASE_STORE_PASSWORD=...
-RELEASE_KEY_ALIAS=stupidsmall
-RELEASE_KEY_PASSWORD=...
-```
-
-Build:
-
-```bash
-./gradlew bundleRelease       # AAB for Play Store
-./gradlew assembleRelease     # APK for sideloading
-```
-
-R8 minification and resource shrinking are enabled in release. Without `RELEASE_STORE_FILE` the signing config silently no-ops (intentional: keeps debug builds working when you clone without a keystore).
-
-### AI proxy
-
-The Cloudflare Worker source lives in `proxy/worker.js`. Deploy with:
-
-```bash
-cd proxy
-wrangler deploy
-wrangler secret put GROQ_API_KEY
-wrangler secret put APP_SECRET    # must match PROXY_APP_SECRET in local.properties
-```
-
-The worker:
-- Validates the app-side shared secret in the `X-App-Secret` header
-- Maps a model alias (e.g. `openai/gpt-oss-120b:free`) to a real Groq model name
-- Forwards to `api.groq.com/openai/v1/chat/completions`
-- Logs request counts only, never task content
 
 ---
 
@@ -246,7 +162,7 @@ Ideas under consideration for v1.x:
 - Calendar integration to surface "what's the next stupidly small thing for this meeting prep"
 - Voice-first entry. Describe a task aloud, get a breakdown back.
 - Smarter recurring tasks (skip-if-completed-yesterday, custom RRULEs)
-- Apple Watch / Wear OS focus timer companion
+- Wear OS focus timer companion
 
 ---
 
