@@ -2,7 +2,7 @@ const dataScienceProjects = [
   {
     title: 'Fraud Alert Triage',
     description:
-      'Ranking 30,622 bank account-opening fraud alerts, comparing 50 reviewers, and a local AI assistant that drafts investigator notes behind code-enforced guardrails: 98% valid on the first try, plus an audit of what the checks missed. Live on Tableau Public.',
+      'Ranking 30,622 bank account-opening fraud alerts, comparing 50 reviewers, and a local AI assistant that drafts investigator notes behind code-enforced guardrails: 98% valid on the first try, 100% after one retry, zero flags or numbers outside the case data. Live on Tableau Public.',
     tags: ['Python', 'XGBoost', 'SHAP', 'Ollama', 'LLM guardrails', 'Tableau'],
     image: '/fraud-triage-icon.png',
     href: '/apps/fraud-alert-triage',
