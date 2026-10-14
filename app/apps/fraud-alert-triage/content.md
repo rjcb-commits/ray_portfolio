@@ -40,13 +40,13 @@ On 250 cases (150 from the top of the queue plus 100 random):
 
 - **98%** of AI notes passed every guardrail on the first try
 - **0** accepted notes listed a risk signal that isn't one of the case's reason codes
-- **21 of 244** accepted notes (8.6%) still mentioned a flag the case doesn't have in the note text, which the checks didn't cover (see below)
+- **19 of 244** accepted notes (7.8%) still mentioned a flag the case doesn't have in the note text, which the checks didn't cover (see below)
 - **2%** fell back to a deterministic template instead of showing an unchecked note
 - **4.4 seconds** per case, fully local; no application data leaves the machine
 
-Example (case 559428 from the random sample: score 0.05, rank 29,006; the application was legitimate):
+Example (case 548686 from the random sample: score 0.07, rank 20,148; the application was legitimate):
 
-> Flags: name and email don't match (similarity 0.09); 0.00 days since request; date of birth seen with 3 emails in 4 weeks. *Start with Confirm email ownership: name and email don't match (similarity 0.09). Then Check for linked applications: date of birth seen with 3 emails in 4 weeks.*
+> Flags: device OS windows; name and email don't match (similarity 0.11); date of birth seen with 3 emails in 4 weeks. *Start with Confirm email ownership: name and email don't match (similarity 0.11). Then Check for linked applications: date of birth seen with 3 emails in 4 weeks.*
 
 ## How the guardrails got there
 
@@ -62,7 +62,7 @@ Run 1 looked fine on paper, but reading the output showed most summaries describ
 
 The fix was architectural rather than better wording: take priority away from the model, show it only the score, rank and reason codes, fill the facts in with code, and let the AI write only a short "what to check first, and why" note that is checked against the case. **Enforce the rules in code instead of trusting the prompt.**
 
-**What the checks missed.** Reading the accepted notes afterwards turned up 21 of 244 (8.6%) that mention a flag the case doesn't have. Nineteen say "same-ZIP volume", a phrase the model copied from the prompt's own rule list ("velocity or same-ZIP volume -> Check for linked applications"). Two say a date of birth was seen with 1 email when the case says 2; the number check passed because it only looks for the digit somewhere in the case. The validator checks the structured signal list and the numbers, not the flags written into the note itself. The next fix is to check the note text against the reason codes and match each number inside the flag it belongs to.
+**What the checks missed.** Reading the accepted notes afterwards turned up 19 of 244 (7.8%) that mention a flag the case doesn't have. All 19 say "same-ZIP volume", a phrase the model copied from the prompt's own rule list ("velocity or same-ZIP volume -> Check for linked applications"). The validator checks the structured signal list and the numbers, not the flags written into the note itself. The next fix is to check the note text against the reason codes and match each number inside the flag it belongs to.
 
 ## Why I built it
 
@@ -72,7 +72,7 @@ I work dispute and fraud-adjacent analytics at a top-10 US bank: monitoring disp
 
 Three pages, with navigation buttons.
 
-**Queue.** Fraud share at each daily review capacity, worked in risk-score order, against a dashed 12% random-order baseline. KPI tiles: 30,622 alerts, 74% fraud in the top 100, 6x better than random.
+**Queue.** Fraud share at each daily review capacity, worked in risk-score order, against a dashed 12% random-order baseline, plus a score-band chart (width = share of alerts, height = fraud rate) showing that alerts under 0.2 hold two-thirds of the fraud. KPI tiles: 30,622 alerts, 74% fraud in the top 100, 6x better than random.
 
 **Reviewers.** Fifty analysts as bubbles: false alarms (good customers flagged) on the x-axis, fraud caught on the y-axis, color and size by accuracy. The most accurate, the highest-catching and the least accurate reviewers are called out.
 
@@ -91,7 +91,7 @@ Source: **FiFAR (Financial Fraud Alert Review)** on figshare (CC BY), built on F
 - The applications and the analysts are synthetic. The patterns are realistic; the people aren't real.
 - Several fields are anonymized codes (housing status "BA", for example), so some reasons read as codes rather than plain language.
 - The 7B model's notes are formulaic and sometimes pair a check with a flag imprecisely. A larger model or a fixed flag-to-check mapping would improve this.
-- The checks cover the note's signal list and its numbers, not every flag the note text mentions, so 21 of 244 accepted notes cited a flag the case didn't have.
+- The checks cover the note's signal list and its numbers, not every flag the note text mentions, so 19 of 244 accepted notes cited a flag the case didn't have.
 - The AI evaluation covers 250 cases, not the full alert set, and a synthetic analyst stands in for the human reviewer.
 
 ## Stack
